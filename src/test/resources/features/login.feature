@@ -6,14 +6,6 @@ Feature: Login functionality
   Scenario: User logs in with correct credentials
     Given I am on the homepage
     When I go to the login page
-   # And I enter my username and password
-  #  And I click the login button
+    And I enter my username and password
+    And I click the login button
  #   Then I should be logged in
-
- # Scenario: User logs in with incorrect credentials
-  #  Given I am on the homepage
-  #  When I go to the login page
-  #  And I enter incorrect username or password
-  #  And I click the login button
-  #  Then I should see an error message
-  #  And I should not be logged in

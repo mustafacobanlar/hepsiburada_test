@@ -25,30 +25,27 @@ public class HomePage {
 
     @FindBy(xpath = "//*[@id=\"onetrust-accept-btn-handler\"]")
     private WebElement cookieApprovalButton;
+    @FindBy(xpath = "//*[@id=\"myAccount\"]/div")
+    private WebElement menu;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void navigateToHomePage() {
+    public void navigateToHomePage() throws InterruptedException {
         driver.get(baseUrl);
         clickCookieApprovalButton();
+        Thread.sleep(5000);
     }
 
-    public void clickLoginButton() {
+    public void clickLoginButton() throws InterruptedException {
         Actions actions = new Actions(driver);
         waitUntilElementVisible(loginArea);
         actions.moveToElement(loginArea).perform();
+        Thread.sleep(5000);
+        actions.moveToElement(menu).perform();
         waitUntilElementInteractable(loginButton);
-
-        // Introduce a small delay before clicking the login button
-        try {
-            Thread.sleep(1000); // Adjust the delay time as needed
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         loginButton.click();
     }
 
