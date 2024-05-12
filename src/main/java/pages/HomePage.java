@@ -1,5 +1,6 @@
 package pages;
 
+import org.example.stepdefinitions.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class HomePage {
-    private WebDriver driver;
+    WebDriver driver = DriverFactory.getDriver();
     private String baseUrl = "https://www.hepsiburada.com/";
 
     @FindBy(xpath = "//*[@id=\"login\"]")

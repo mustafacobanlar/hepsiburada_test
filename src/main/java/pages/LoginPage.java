@@ -1,5 +1,6 @@
 package pages;
 
+import org.example.stepdefinitions.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -11,7 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class LoginPage {
-    private WebDriver driver;
+
+    WebDriver driver = DriverFactory.getDriver();
     private String username = "testerboy1995@gmail.com";
     private String password = "Testerboy1995";
 
@@ -42,4 +44,5 @@ public class LoginPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+
 }

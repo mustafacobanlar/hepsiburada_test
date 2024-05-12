@@ -14,31 +14,13 @@ import java.time.Duration;
 
 public class LoginStepDefinitions {
 
-    private WebDriver driver;
     private HomePage homePage;
     private LoginPage loginPage;
 
-    @Before
-    public void setUp() {
-        ChromeOptions options = setupChromeOptions();
-        driver = new ChromeDriver(options);
-        homePage = new HomePage(driver);
-        loginPage = new LoginPage(driver);
+    public LoginStepDefinitions() {
+        homePage = new HomePage(DriverFactory.getDriver());
+        loginPage = new LoginPage(DriverFactory.getDriver());
     }
-
-    private ChromeOptions setupChromeOptions() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--start-maximized");
-        options.addArguments("--disable-popup-blocking");
-        options.setAcceptInsecureCerts(true);
-        return options;
-    }
-
 
     @Given("I am on the homepage")
     public void i_am_on_the_homepage() throws InterruptedException {
@@ -66,10 +48,4 @@ public class LoginStepDefinitions {
         // Implement verification of successful login
     }
 
-    @After
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
 }
