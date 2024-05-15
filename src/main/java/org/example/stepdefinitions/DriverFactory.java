@@ -29,12 +29,12 @@ public class DriverFactory {
         options.setAcceptInsecureCerts(true);
         return options;
     }
-    @After
+    /*@After
     public void quitDriver() {
         if (driver != null) {
             driver.quit();
             driver = null;
         }
-    }
+    }*/
 }
 
